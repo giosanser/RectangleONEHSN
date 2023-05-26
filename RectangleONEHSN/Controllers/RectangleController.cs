@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RectangleONEHSN.Data;
 using RectangleONEHSN.Model;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RectangleONEHSN.Controllers
 {
@@ -8,23 +10,17 @@ namespace RectangleONEHSN.Controllers
     [ApiController]
     public class RectangleController : Controller
     {
+        private readonly IAppDbContext _dbContext;
 
-        private readonly AppDbContext _dbContext;
-
-        public RectangleController(AppDbContext dbContext)
+        public RectangleController(IAppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-                
-        /// <summary>
-        /// Method that return the list of rentacles baes on the provided coordinates
-        /// </summary>
-        /// <param name="coordinates"></param>
-        /// <returns></returns>
+
         [HttpPost("coordinates")]
         public ActionResult<IEnumerable<Rectangle>> GetRectanglesForCoordinates([FromBody] int[][] coordinates)
         {
-            //check if coordinates are null, 0 or lenght is different of two
+            // Check if coordinates are null, empty, or have an incorrect length
             if (coordinates == null || coordinates.Length == 0 || coordinates.Any(c => c.Length != 2))
             {
                 return BadRequest("Invalid coordinates format. Please provide an array of coordinate pairs, where each pair contains two numbers.");
@@ -46,7 +42,5 @@ namespace RectangleONEHSN.Controllers
 
             return Ok(rectangles);
         }
-
-
     }
 }

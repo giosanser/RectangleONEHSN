@@ -9,6 +9,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RectangleDBConnectionString"));
 });
 
+//Register IAppDbContext interface
+builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
+
 // Register DataSeeder as a service
 builder.Services.AddScoped<DataSeeder>();
 

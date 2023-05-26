@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleONEHSN", "RectangleONEHSN\RectangleONEHSN.csproj", "{AAA39A4C-43F3-4135-82D3-2527532570BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RectangleONEHSN", "RectangleONEHSN\RectangleONEHSN.csproj", "{AAA39A4C-43F3-4135-82D3-2527532570BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RectangleAPI.Tests", "RectangleAPI.Tests\RectangleAPI.Tests.csproj", "{31CEC9CF-D378-4181-9BA6-2FC203E1B51F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AAA39A4C-43F3-4135-82D3-2527532570BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA39A4C-43F3-4135-82D3-2527532570BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA39A4C-43F3-4135-82D3-2527532570BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CEC9CF-D378-4181-9BA6-2FC203E1B51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CEC9CF-D378-4181-9BA6-2FC203E1B51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CEC9CF-D378-4181-9BA6-2FC203E1B51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CEC9CF-D378-4181-9BA6-2FC203E1B51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
