@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using RectangleONEHSN.Authentication;
 using RectangleONEHSN.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //Register IAppDbContext interface
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
 
+//Register IUserService interface
+builder.Services.AddScoped<IUserService, UserService>();
+
 // Register DataSeeder as a service
 builder.Services.AddScoped<DataSeeder>();
 
@@ -21,6 +26,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//enable authentication
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
 
 var app = builder.Build();
 
@@ -45,6 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication(); // Enable authentication
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

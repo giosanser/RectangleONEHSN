@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RectangleONEHSN.Data;
 using RectangleONEHSN.Model;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace RectangleONEHSN.Controllers
         }
 
         [HttpPost("coordinates")]
+        [Authorize]
         public ActionResult<IEnumerable<Rectangle>> GetRectanglesForCoordinates([FromBody] int[][] coordinates)
         {
             // Check if coordinates are null, empty, or have an incorrect length
